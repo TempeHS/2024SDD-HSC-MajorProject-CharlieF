@@ -2,14 +2,47 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('.database/datasource.db');
 
 
+/* // pseudocode portion
+START
+    GET record
+    LET outputString = "[\n"
+    COUNT LOOP from 0 to record.length ()
+        outputString = outputString + "{\n"
+        outputString = outputString + '"nesaID":'
+        outputString = outputString + record.nesaID(COUNT)
+        outputString = outputString + ',\n"name":'
+        outputString = outputString + record.name(COUNT)
+        outputString = outputString + ',\n"age":'
+        outputString = outputString + record.age(COUNT)
+        outputString = outputString + "}\n"
+    RETURN outputString = "]\n"`
+END
+*/
+
+let myString = '[\n';
+db.all("SELECT * FROM sddstudents", function(err, rows) {
+let myCounter = 0;
+rows.forEach(function (row) {
+    myString = myString + '{\n"nesaID": ' + row.nesaID + ',\n"name": "' + row.name + '",\n"age": "' + row.age;
+    myCounter++
+    if (myCounter == rows.length) {
+        myString = myString + '"\n}\n';
+    } else {
+        myString = myString + '"\n},\n';
+    }
+});
+
 // console.log(myString);
-let myString = "123";
+//let myString = "123";
 var fs = require('fs');
-fs.writeFile("public/frontEndData2.json", myString + "]", function(err) {
+fs.writeFile("public/frontEndData.json", myString + "]", function(err) {
     if (err) {
         console.log(err);
     }
+}
+);
 });
+
 
 const express = require("express");
 const path = require("path");

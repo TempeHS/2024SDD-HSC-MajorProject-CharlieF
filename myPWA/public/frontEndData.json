@@ -1,18 +1,42 @@
-123]
-
-/*
-START
-    GET record
-    LET outputString = "[\n"
-    COUNT LOOP from 0 to record.length ()
-        outputString = outputString + "{\n"
-        outputString = outputString + '"nesaID":'
-        outputString = outputString + record.nesaID(COUNT)
-        outputString = outputString + ',\n"name":'
-        outputString = outputString + record.name(COUNT)
-        outputString = outputString + ',\n"age":'
-        outputString = outputString + record.age(COUNT)
-        outputString = outputString + "}\n"
-    RETURN outputString = "]\n"`
-END
-*/
+[
+{
+"nesaID": 1234,
+"name": "David Smith",
+"age": "17"
+},
+{
+"nesaID": 1235,
+"name": "John Smith",
+"age": "17"
+},
+{
+"nesaID": 2345,
+"name": "Eric Smith",
+"age": "17"
+},
+{
+"nesaID": 3456,
+"name": "Jasmin Johns",
+"age": "17"
+},
+{
+"nesaID": 3465,
+"name": "David Johns",
+"age": "17"
+},
+{
+"nesaID": 4567,
+"name": "Lucas Davis",
+"age": "17"
+},
+{
+"nesaID": 23456,
+"name": "Michael Smith",
+"age": "17"
+},
+{
+"nesaID": 45678,
+"name": "Marty Davis",
+"age": "17"
+}
+]
