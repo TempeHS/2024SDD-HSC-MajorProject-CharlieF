@@ -1,1 +1,18 @@
 123]
+
+/*
+START
+    GET record
+    LET outputString = "[\n"
+    COUNT LOOP from 0 to record.length ()
+        outputString = outputString + "{\n"
+        outputString = outputString + '"nesaID":'
+        outputString = outputString + record.nesaID(COUNT)
+        outputString = outputString + ',\n"name":'
+        outputString = outputString + record.name(COUNT)
+        outputString = outputString + ',\n"age":'
+        outputString = outputString + record.age(COUNT)
+        outputString = outputString + "}\n"
+    RETURN outputString = "]\n"`
+END
+*/

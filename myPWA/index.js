@@ -5,7 +5,7 @@ const db = new sqlite3.Database('.database/datasource.db');
 // console.log(myString);
 let myString = "123";
 var fs = require('fs');
-fs.writeFile("public/frontEndData.json", myString + "]", function(err) {
+fs.writeFile("public/frontEndData2.json", myString + "]", function(err) {
     if (err) {
         console.log(err);
     }
