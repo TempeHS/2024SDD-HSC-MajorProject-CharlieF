@@ -1,9 +1,9 @@
--- CREATE TABLE sddstudents (nesaID INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, age INTEGER NOT NULL);
+CREATE TABLE tasks (taskID INTEGER NOT NULL PRIMARY KEY, taskName TEXT NOT NULL, dateNumbers INTEGER NOT NULL);
 
--- INSERT INTO sddstudents (nesaID, name, age) VALUES (1234,"David Smith","17");
+INSERT INTO tasks (taskID, taskName, taskNumbers) VALUES (1,"test","2022024");
 
--- INSERT INTO sddstudents (nesaID, name, age) VALUES (45678,"Marty Davis","17");
+-- INSERT INTO tasks (taskID, taskName, taskNumbers) VALUES (45678,"Marty Davis","17");
 
-SELECT * FROM sddstudents;
+--SELECT * FROM tasks;
 
-SELECT * FROM sddstudents WHERE name LIKE 'David Smith';
+--SELECT * FROM tasks WHERE name LIKE 'David Smith';
