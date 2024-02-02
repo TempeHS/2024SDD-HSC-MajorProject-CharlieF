@@ -2,4 +2,7 @@
 ## Software Design and Development WebAPP
 
 # Event/Activity/Task planner
-## Goals:
+## TODO:
+  - Nuke most of repo to implement new design and new functions
+
+# Documentation
