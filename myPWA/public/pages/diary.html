@@ -33,5 +33,17 @@
       <div class="container"></div>
     </main>
     <script src="app.js"></script>
+    <script>
+        // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
+        function wait(ms){
+        var start = new Date().getTime();
+        var end = start;
+        while(end < start + ms) {
+          end = new Date().getTime();
+        }
+      }
+      wait(1000);
+      console.log("diary.html successfully loaded! (HTML PAGE LOCATION: /myPWA/public/pages/diary.html)");
+    </script>
   </body>
 </html>

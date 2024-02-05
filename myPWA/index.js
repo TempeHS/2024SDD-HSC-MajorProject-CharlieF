@@ -1,3 +1,20 @@
+//*********************************************************************************
+// written by:																   
+// ▄████▄   ██░ ██  ▄▄▄       ██▀███   ██▓     ██▓▓█████ 						   
+// ▒██▀ ▀█  ▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██▒    ▓██▒▓█   ▀						    
+// ▒▓█    ▄ ▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒▒██░    ▒██▒▒███  						    
+// ▒▓▓▄ ▄██▒░▓█ ░██ ░██▄▄▄▄██ ▒██▀▀█▄  ▒██░    ░██░▒▓█  ▄						    
+// ▒ ▓███▀ ░░▓█▒░██▓ ▓█   ▓██▒░██▓ ▒██▒░██████▒░██░░▒████▒						   
+// ░ ░▒ ▒  ░ ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░▓  ░░▓  ░░ ▒░ ░						   	
+//   ░  ▒    ▒ ░▒░ ░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░ ▒  ░ ▒ ░ ░ ░  ░						   
+// ░         ░  ░░ ░  ░   ▒     ░░   ░   ░ ░    ▒ ░   ░   						   
+// ░ ░       ░  ░  ░      ░  ░   ░         ░  ░ ░     ░  ░						   
+// ░                                                      						   
+//*********************************************************************************
+
+// NOTES: 
+
+
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('.database/datasource.db');
 
@@ -20,10 +37,10 @@ END
 */
 
 let myString = '[\n';
-db.all("SELECT * FROM sddstudents", function(err, rows) {
+db.all("SELECT * FROM tasks", function(err, rows) {
 let myCounter = 0;
 rows.forEach(function (row) {
-    myString = myString + '{\n"nesaID": ' + row.nesaID + ',\n"name": "' + row.name + '",\n"age": "' + row.age;
+    myString = myString + '{\n"taskID": ' + row.taskID + ',\n"taskName": "' + row.taskName + '",\n"taskDateInt": "' + row.taskDateInt;
     myCounter++
     if (myCounter == rows.length) {
         myString = myString + '"\n}\n';
