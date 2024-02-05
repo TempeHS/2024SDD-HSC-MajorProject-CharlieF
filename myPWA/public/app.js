@@ -10,13 +10,13 @@ fetch('./frontEndData.json')
     console.log('error: ' + err); 
   }); 
   function appendData(data) { 
-    data.forEach(({ nesaID, name, age } = rows) => { 
+    data.forEach(({ taskID, taskName, taskDateInt } = rows) => { 
       result += ` 
        <div class="card"> 
             <img class="card-image" src="https://windsorpreschool.com/teachers/generic-profile-image-7" alt=""/> 
-            <h1 class="card-name">${name}</h1> 
-            <p class="card-about">${age}</p> 
-            <a class="card-link" ${nesaID}</a> 
+            <h1 class="card-name">${taskName}</h1> 
+            <p class="card-about">${taskDateInt}</p> 
+            <a class="card-link" ${taskID}</a> 
         </div> 
        `; 
     }); 
@@ -31,3 +31,18 @@ fetch('./frontEndData.json')
         .catch((err) => console.log("service worker not registered", err)); 
     }); 
   } 
+
+function onButtonClick1 () {
+
+}
+
+function onButtonClick2 () {
+
+}
+
+function onButtonClick3 () {
+
+}
+
+const calenderPageButton = document.querySelector('calendarPageButton');
+calendar.addEventListener('click', onButtonClick1);
