@@ -22,10 +22,14 @@
   </head>
   <body>
     <main>
-      <img src="images\logo.png"/>
+      <img src="images\icons\icon-128x128.png"/>
       <nav>
-        <h1>Task Tracker</h1>
+        <h1 class="center-text">Task Tracker</h1>
         <style>
+          .center-text {
+            margin: 0px;
+            position: relative;
+          }
           .center {
             margin: 0;
             position: absolute;
@@ -34,14 +38,22 @@
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
           }
+          .center-block {
+ 		        display: block;
+  		      margin-right: auto;
+  		      margin-left: auto;
+            margin-bottom: 10px; /* gap between buttons */
+		        width: 300px; /* the size */
+            height: 100px;
+		      }
           </style>
             <div class="center">
-              <button id="calanderPageButton" onclick="onButtonClick1()">Task Calendar</button>
-              <button id="diaryPageButton" onclick="onButtonClick2()">Diary</button>
-              <button id="timePageButton" onclick="onButtonClick3()">Time Management Tips</button>
+              <button id="calanderPageButton" onclick="onButtonClick1();" class="center-block">Task Calendar</button>
+              <button id="diaryPageButton" onclick="onButtonClick2();" class="center-block">Diary</button>
+              <button id="timePageButton" onclick="onButtonClick3();" class="center-block">Time Management Tips</button>
             </div>
         <ul>
-          <li><a href="#">Home</a></li>
+          <li><a href="pages\documentation.html">Documentation</a></li>
           <li><a href="pages\about.html">About</a></li>
         </ul>
       </nav>
