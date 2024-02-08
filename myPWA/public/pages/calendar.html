@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <body onload="startTime()">  
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -21,6 +22,55 @@
     <link rel="icon" type="image/x-icon" href="images/icons/icon-512x512.png" />
   </head>
   <body>
+    <style>
+      .h2 {
+        font-size: 16px;
+      }
+      /* Dropdown Button */
+      .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Dropdown button on hover & focus */
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+      }
+
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {background-color: #ddd;}
+
+      /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+      .show {display:block;}
+    </style>
     <main>
       <img src="..\images\icons\icon-128x128.png"/>
       <nav>
@@ -30,21 +80,22 @@
           <li><a href="..\about.html">About</a></li>
         </ul>
       </nav>
-      <div class="container"></div>
+      <h2>Current Date and Time:</h2>
+      <div id="txt"></div>
+      <div class="txt2">
+        <h2 for="start">Select Task/Event Date:</h2>
+        <input type="date" id="start" name="trip-start" value="2024-02-01" min="2024-01-01" max="2024-12-31" />
+      </div>
+      <h2>Task/Event Name <input class="h2-align" type="text" id="usernameInput"/></h2>
+		  <div class="dropdown">
+        <button onclick="htmlDropdown()" class="dropbtn">Priority</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a type="button" id="dropdownChoice1" onclick="dropdownChoice()">High</a>
+          <a type="button" id="dropdownChoice2" onclick="dropdownChoice()">Medium</a>
+          <a type="button" id="dropdownChoice3" onclick="dropdownChoice()">Low</a>
+        </div>
+      </div>
     </main>
-    <script src="app.js"></script>
-    <script>
-        // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
-        function wait(ms){
-        var start = new Date().getTime();
-        var end = start;
-        while(end < start + ms) {
-          end = new Date().getTime();
-        }
-      }
-
-      wait(1000);
-      console.log("calendar.html successfully loaded! (HTML PAGE LOCATION: /myPWA/public/pages/calendar.html)");
-    </script>
+    <script src="../js/calendarScript.js"></script>
   </body>
 </html>

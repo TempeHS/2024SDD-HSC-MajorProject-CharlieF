@@ -1,0 +1,1 @@
+1. 8-9th feb, create button to create tasks that hides everything on calendar page until the create task button is clicked
