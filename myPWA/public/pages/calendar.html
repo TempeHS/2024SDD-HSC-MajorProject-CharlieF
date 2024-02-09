@@ -69,7 +69,7 @@
       .dropdown-content a:hover {background-color: #ddd;}
 
       /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-      .show {display:block;}
+      .show {display:none;}
     </style>
     <main>
       <img src="..\images\icons\icon-128x128.png"/>
@@ -82,18 +82,21 @@
       </nav>
       <h2>Current Date and Time:</h2>
       <div id="txt"></div>
-      <div class="txt2">
-        <h2 for="start">Select Task/Event Date:</h2>
+      <button class="dropbtn" onclick="hideShowCreateButton()">Create Task/Event</button>
+      <div id="txt2" style="display:none" class="txt2">
+        <h2 for="start">Select Task/Event Time & Date:</h2>
         <input type="date" id="start" name="trip-start" value="2024-02-01" min="2024-01-01" max="2024-12-31" />
+        <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+        <h2>Task/Event Name: <input class="h2-align" type="text" id="taskNameInput"/></h2>
+        <div class="dropdown">
+          <button onclick="htmlDropdown()" class="dropbtn">Priority</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a type="button" id="dropdownChoice1" onclick="dropdownChoice()">High</a>
+            <a type="button" id="dropdownChoice2" onclick="dropdownChoice()">Medium</a>
+            <a type="button" id="dropdownChoice3" onclick="dropdownChoice()">Low</a>
+          </div>
+          <button onclick="saveButton()" class="dropbtn">Save</button>
       </div>
-      <h2>Task/Event Name <input class="h2-align" type="text" id="usernameInput"/></h2>
-		  <div class="dropdown">
-        <button onclick="htmlDropdown()" class="dropbtn">Priority</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a type="button" id="dropdownChoice1" onclick="dropdownChoice()">High</a>
-          <a type="button" id="dropdownChoice2" onclick="dropdownChoice()">Medium</a>
-          <a type="button" id="dropdownChoice3" onclick="dropdownChoice()">Low</a>
-        </div>
       </div>
     </main>
     <script src="../js/calendarScript.js"></script>
