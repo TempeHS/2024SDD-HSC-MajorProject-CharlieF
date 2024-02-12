@@ -1,4 +1,5 @@
 var taskPriority = 0;
+var taskCount = 0;
 
 // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
 function wait(ms){
@@ -53,18 +54,19 @@ window.onclick = function(event) {
 }
 
 function dropdownChoice() {
-  if (document.getElementById("dropdownChoice1").onClick) {
-    taskPriority = 1;
-  } else if (document.getElementById("dropdownChoice2").onClick) {
+  if (document.getElementById("dropdownChoice1").onclick) {
+    taskPriority = 1;   
+  } else if (document.getElementById("dropdownChoice2").onclick) {
     taskPriority = 2;
-  } else if (document.getElementById("dropdownChoice3").onClick) {
+  } else if (document.getElementById("dropdownChoice3").onclick) {
     taskPriority = 3;
   }
 }
 
-var intervalId = window.setInterval(function(){
+// debug to see if dropdownChoice function was changing taskPriority
+/*var intervalId = window.setInterval(function(){
 	console.log("dropdown output = " + taskPriority);
-  }, 500);
+  }, 500);*/
 
   function hideShowCreateButton() {
     var x = document.getElementById("txt2");
@@ -82,7 +84,34 @@ function saveButton() {
   dateAndTimeOutput();
   var x = document.getElementById("txt2");
   x.style.display = "none";
+  console.log("task priority is set to: " + taskPriority);
+  saveButtonDataParse(); 
 }  
+
+function saveButtonDataParse () {
+  var dateControl = document.querySelector('input[type="date"]');
+  var timeControl = document.querySelector('input[type="time"]');
+  dateControl.value = dateControl.value;
+  timeControl.value = timeControl.value;
+  dateTimeOutput = timeControl.value + "-" + dateControl.value;
+
+  // create a new div element
+  const newDiv = document.createElement("div");
+  const newButton = document.createElement('button');
+
+  // and give it some content
+  var taskNameInput = document.getElementById("taskNameInput").value;
+  var taskNameInputString = taskNameInput;
+  newButton.textContent = "Task Name: " + taskNameInputString + " Date And Time: " + dateTimeOutput + " Task Priority: " + taskPriority;
+
+  // add the text node to the newly created div
+  document.body.appendChild(newButton);
+  document.body.class("dropbtn");
+
+  // add the newly created element and its content into the DOM
+  const currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, newButton, currentDiv);
+}
 
 function dateAndTimeOutput() {
   var dateControl = document.querySelector('input[type="date"]');
@@ -93,37 +122,3 @@ function dateAndTimeOutput() {
   console.log(dateTimeOutput); // prints "2017-06-01" -- change to return later on to create function that grabs this data and puts it into the SQL Database
   alert("Task/Event has been created, and set to notify you at: " + dateTimeOutput);
 }
-
-let result = ""; 
-fetch('./frontEndData.json') 
-  .then(function (response) { 
-    return response.json(); 
-  }) 
-  .then(function (data) { 
-    appendData(data); 
-  }) 
-  .catch(function (err) { 
-    console.log('error: ' + err); 
-  }); 
-  function appendData(data) { 
-    data.forEach(({ taskID, taskName, taskDateInt } = rows) => { 
-      result += ` 
-       <div class="card"> 
-            <img class="card-image" src="https://windsorpreschool.com/teachers/generic-profile-image-7" alt=""/> 
-            <h1 class="card-name">${taskName}</h1> 
-            <p class="card-about">${taskDateInt}</p> 
-            <a class="card-link" ${taskID}</a> 
-        </div> 
-       `; 
-    }); 
-    document.querySelector(".container").innerHTML = result; 
-  } 
-   
-  if ("serviceWorker" in navigator) { 
-    window.addEventListener("load", function () { 
-      navigator.serviceWorker 
-        .register("/serviceWorker.js") 
-        .then((res) => console.log("service worker registered")) 
-        .catch((err) => console.log("service worker not registered", err)); 
-    }); 
-  } 
