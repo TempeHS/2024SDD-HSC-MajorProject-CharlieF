@@ -33,8 +33,8 @@ function wait(ms){
   }
 
   /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function htmlDropdown() {
+  toggle between hiding and showing the dropdown content */
+  function htmlDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
@@ -89,7 +89,7 @@ function dateAndTimeOutput() {
   var timeControl = document.querySelector('input[type="time"]');
   dateControl.value = dateControl.value;
   timeControl.value = timeControl.value;
-  dateTimeOutput = timeControl.value + " @ " + dateControl.value;
+  dateTimeOutput = timeControl.value + "-" + dateControl.value;
   console.log(dateTimeOutput); // prints "2017-06-01" -- change to return later on to create function that grabs this data and puts it into the SQL Database
   alert("Task/Event has been created, and set to notify you at: " + dateTimeOutput);
 }
