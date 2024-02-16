@@ -78,10 +78,13 @@ function dropdownChoice3() {
 
 //debug to see if dropdownChoice function was changing taskPriority
 // executes/calls code or functions every x amount of seconds
-/*var intervalId = window.setInterval(function(){
-	console.log("dropdown output = " + taskPriority);
-  console.log(buttonCount);
-  }, 1000);*/
+var intervalId = window.setInterval(function(){
+	//console.log("dropdown output = " + taskPriority);
+  //console.log(buttonCount);
+  //console.log(document.getElementById(timeControl));
+  //const timeControl = document.querySelector('input[type="time"]');
+  taskPageAlert();
+  }, 1000);
 
   function hideShowCreateButton() {
     var x = document.getElementById("txt2");
@@ -110,21 +113,22 @@ function saveButtonDataParse () {
   var timeControl = document.querySelector('input[type="time"]');
   dateControl.value = dateControl.value;
   timeControl.value = timeControl.value;
-  dateTimeOutput = timeControl.value + "-" + dateControl.value;
+  dateTimeOutput = timeControl.value + ":00" + "-" + dateControl.value;
 
   // create a new div element
   const newDiv = document.createElement("div");
+  newDiv.id = "div1";
   const newButton = document.createElement('button');
 
   // and give it some content
   var taskNameInput = document.getElementById("taskNameInput").value;
   var taskNameInputString = taskNameInput;
-  //newButton.textContent = "Task Name: " + taskNameInputString + " Date And Time: " + dateTimeOutput + " Task Priority: " + taskPriority;
+  newButton.value = dateTimeOutput;
   newButton.textContent = taskNameInputString;
 
-  // add the text node to the newly created div
+  // give the "text" class to the button
   document.body.appendChild(newButton);
-  newButton.classList.add("dropbtn");
+  newButton.classList.add("tasks");
   newButton.id = "button" + buttonId;
 
   // add the newly created element and its content into the DOM
@@ -157,14 +161,46 @@ function buttonTaskInfo() {
   deleteTask();
 }
 
+function deleteTaskSubFunction1() {
+  var elem = document.getElementById("button" + buttonId);
+  elem.parentNode.removeChild(elem);
+  buttonCount = buttonCount -1;
+  buttonId = buttonId -1;
+}
+
 function deleteTask() {
   window.confirm("Do you want to delete this task?");
   if (confirm("Task deleted!")) {
-    var elem = document.getElementById("button" + buttonId);
-    elem.parentNode.removeChild(elem);
-    buttonCount = buttonCount -1;
-    buttonId = buttonId -1;
+    deleteTaskSubFunction1();
   } else {
     alert("Task deletion cancelled!");
+  }
+}
+
+
+function taskPageAlert() {
+  //timeDateOutput();
+  var taskNameInput = document.getElementById("taskNameInput").value;
+  var taskNameInputString = taskNameInput;
+  let tasks = document.getElementsByClassName("tasks").value;
+  var dateControl = document.querySelector('input[type="date"]');
+  var timeControl = document.querySelector('input[type="time"]');
+  dateControl.value = dateControl.value;
+  timeControl.value = timeControl.value;
+  dateTimeOutput = timeControl.value + ":00" + "-" + dateControl.value;
+  let today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    let day = today.getDate();
+    let mo = today.getUTCMonth() +1;
+    let ye = today.getFullYear();
+    m = checkTime(m);
+    s = checkTime(s);
+    setTimeout(startTime, 1000);
+  if (buttonCount == 0 && buttonId == 0) {
+    console.log("waiting for task...");
+  } else if (document.getElementById("button" + buttonId).value = h + ":" + m + ":00" + "-" + ye + "-" + mo + "-" + day) {
+      console.log("REMINDER: " + taskNameInputString + " is due!");
   }
 }

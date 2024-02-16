@@ -65,13 +65,27 @@
         display: block;
       }
 
+      .tasks {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin: 0 auto;
+        margin: 0;
+        position: relative;
+        top: 50%;
+        left: 50%;
+      }
+
       /* Change color of dropdown links on hover */
       .dropdown-content a:hover {background-color: #ddd;}
 
       /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
       .show {display:block;}
     </style>
-    <main>
+    <main id="main">
       <img src="..\images\icons\icon-128x128.png"/>
       <nav>
         <h1>Calender</h1>
@@ -99,7 +113,7 @@
       <button onclick="saveButton()" class="dropbtn">Save</button>
       </div>
       <h2>Tasks:</h2>
-      <div id="tasksList"></div>
+      <div id="tasksList" class="txt2"></div>
     </main>
     <script src="../js/calendarScript.js"></script>
   </body>
