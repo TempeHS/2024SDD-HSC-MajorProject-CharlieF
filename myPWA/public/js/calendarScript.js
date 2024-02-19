@@ -26,7 +26,8 @@ function wait(ms){
     let ye = today.getFullYear();
     m = checkTime(m);
     s = checkTime(s);
-    document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s + "  " + day + "/" + mo + "/" + ye;
+    document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s + " " + day + "/" + mo + "/" + ye;
+    document.getElementById('txt').value =  h + ":" + m + ":" + s + " " + ye + "-" + mo + "-" + day;
     setTimeout(startTime, 1000);
   }
 
@@ -84,6 +85,7 @@ var intervalId = window.setInterval(function(){
   //console.log(document.getElementById(timeControl));
   //const timeControl = document.querySelector('input[type="time"]');
   taskPageAlert();
+  //console.log(document.getElementById("txt").value)
   }, 1000);
 
   function hideShowCreateButton() {
@@ -108,12 +110,12 @@ function saveButton() {
 }  
 
 function saveButtonDataParse () {
-  buttonId = buttonId +1;
+  //buttonId = buttonId +1;
   var dateControl = document.querySelector('input[type="date"]');
   var timeControl = document.querySelector('input[type="time"]');
   dateControl.value = dateControl.value;
   timeControl.value = timeControl.value;
-  dateTimeOutput = timeControl.value + ":00" + "-" + dateControl.value;
+  dateTimeOutput = timeControl.value + ":00" + " " + dateControl.value;
 
   // create a new div element
   const newDiv = document.createElement("div");
@@ -129,13 +131,13 @@ function saveButtonDataParse () {
   // give the "text" class to the button
   document.body.appendChild(newButton);
   newButton.classList.add("tasks");
-  newButton.id = "button" + buttonId;
+  newButton.id = 1;
 
   // add the newly created element and its content into the DOM
   let currentDiv = document.getElementById("div");
   document.body.insertBefore(newDiv, newButton, currentDiv);
   newButton.addEventListener('click', () => {
-    buttonTaskInfo();
+    
   });
 }
 
@@ -165,7 +167,7 @@ function deleteTaskSubFunction1() {
   var elem = document.getElementById("button" + buttonId);
   elem.parentNode.removeChild(elem);
   buttonCount = buttonCount -1;
-  buttonId = buttonId -1;
+  //buttonId = buttonId -1;
 }
 
 function deleteTask() {
@@ -177,31 +179,15 @@ function deleteTask() {
   }
 }
 
-
 function taskPageAlert() {
-  //timeDateOutput();
-  var taskNameInput = document.getElementById("taskNameInput").value;
-  var taskNameInputString = taskNameInput;
-  let tasks = document.getElementById("button" + buttonId);
-  //var dateTime = document.getElementById("txt");
-  var dateControl = document.querySelector('input[type="date"]');
-  var timeControl = document.querySelector('input[type="time"]');
-  dateControl.value = dateControl.value;
-  timeControl.value = timeControl.value;
-  dateTimeOutput = timeControl.value + ":00" + "-" + dateControl.value;
-  let today = new Date();
-    let h = today.getHours();
-    let m = today.getMinutes();
-    let s = today.getSeconds();
-    let day = today.getDate();
-    let mo = today.getUTCMonth() +1;
-    let ye = today.getFullYear();
-    m = checkTime(m);
-    s = checkTime(s);
-    setTimeout(startTime, 1000);
-  if (buttonCount == 0 && buttonId == 0) {
-    console.log("waiting for task...");
-  } else if (tasks.name = h + ":" + m + ":" + s + "-" + day + "-" + mo + "-" + ye) {
-      console.log("REMINDER: " + taskNameInputString + " is due!");
+  let tasks = document.getElementById("1").value;
+  let dateTime = document.getElementById("txt").value;
+  console.log(tasks + " " + dateTime);
+  if (dateTime = tasks) {
+    var taskNameInput = document.getElementById("taskNameInput").value;
+    var taskNameInputString = taskNameInput;
+    console.log("ALERT: " + taskNameInputString + " is due!")
+  } else if (dateTime != tasks) {
+    console.log("waiting for task....");
   }
 }
