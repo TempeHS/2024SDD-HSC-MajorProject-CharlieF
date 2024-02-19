@@ -182,7 +182,8 @@ function taskPageAlert() {
   //timeDateOutput();
   var taskNameInput = document.getElementById("taskNameInput").value;
   var taskNameInputString = taskNameInput;
-  let tasks = document.getElementsByClassName("tasks").value;
+  let tasks = document.getElementById("button" + buttonId);
+  //var dateTime = document.getElementById("txt");
   var dateControl = document.querySelector('input[type="date"]');
   var timeControl = document.querySelector('input[type="time"]');
   dateControl.value = dateControl.value;
@@ -200,7 +201,7 @@ function taskPageAlert() {
     setTimeout(startTime, 1000);
   if (buttonCount == 0 && buttonId == 0) {
     console.log("waiting for task...");
-  } else if (document.getElementById("button" + buttonId).value = h + ":" + m + ":00" + "-" + ye + "-" + mo + "-" + day) {
+  } else if (tasks.name = h + ":" + m + ":" + s + "-" + day + "-" + mo + "-" + ye) {
       console.log("REMINDER: " + taskNameInputString + " is due!");
   }
 }
