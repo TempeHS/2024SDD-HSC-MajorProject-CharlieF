@@ -2,6 +2,7 @@ let taskPriority = 0;
 var taskCount = 0;
 var buttonId = 0;
 var buttonCount = 0;
+var divGenCount = 0;
 
 // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
 function wait(ms){
@@ -86,6 +87,7 @@ var intervalId = window.setInterval(function(){
   //const timeControl = document.querySelector('input[type="time"]');
   //console.log(document.getElementById("txt").value)
   taskPageAlert();
+  autoDeleteOldTask();
   }, 1000);
 
   function hideShowCreateButton() {
@@ -137,7 +139,7 @@ function saveButtonDataParse () {
   let currentDiv = document.getElementById("div");
   document.body.insertBefore(newDiv, newButton, currentDiv);
   newButton.addEventListener('click', () => {
-    
+    buttonTaskInfo();
   });
 }
 
@@ -164,16 +166,26 @@ function buttonTaskInfo() {
 }
 
 function deleteTaskSubFunction1() {
-  var elem = document.getElementById("button" + buttonId);
-  elem.parentNode.removeChild(elem);
-  buttonCount = buttonCount -1;
-  //buttonId = buttonId -1;
+  var elem = document.getElementById(buttonId);
+    elem.parentNode.removeChild(elem);
+    buttonCount = buttonCount -1;
+    //buttonId = buttonId -1;
+}
+
+function autoDeleteOldTask () {
+  var elem = document.getElementById("0");
+    elem.parentNode.removeChild(elem);
+    buttonCount = buttonCount -1;
+    //buttonId = buttonId -1;
 }
 
 function deleteTask() {
   window.confirm("Do you want to delete this task?");
   if (confirm("Task deleted!")) {
-    deleteTaskSubFunction1();
+    var elem = document.getElementById("1");
+    elem.parentNode.removeChild(elem);
+    buttonCount = buttonCount -1;
+    //buttonId = buttonId -1;
   } else {
     alert("Task deletion cancelled!");
   }
@@ -183,10 +195,13 @@ function taskPageAlert() {
   let tasks = document.getElementById("1").value;
   let dateTime = document.getElementById("txt").innerHTML;
   console.log(tasks + " " + dateTime); 
-  if (tasks = dateTime) {
+  if (dateTime >= tasks) {
     var taskNameInput = document.getElementById("taskNameInput").value;
     var taskNameInputString = taskNameInput;
-    console.log("ALERT: " + taskNameInputString + " is due!");
+    alert("ALERT: " + taskNameInputString + " is due!, This task will now be deleted.");
+    console.log("ALERT: " + taskNameInputString + " is due!, This task will now be deleted.");
+    // add in code here to delete the button that has matching time and date
+    document.getElementById("1").id = 0;
   } else if (dateTime != tasks) {
     console.log("waiting for task....");
   }
