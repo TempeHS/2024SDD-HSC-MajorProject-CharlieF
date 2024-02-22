@@ -2,7 +2,6 @@ let taskPriority = 0;
 var taskCount = 0;
 var buttonId = 0;
 var buttonCount = 0;
-var divGenCount = 0;
 
 // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
 function wait(ms){
@@ -27,7 +26,6 @@ function wait(ms){
     let ye = today.getFullYear();
     m = checkTime(m);
     s = checkTime(s);
-    //document.getElementById('txt').innerHTML = h + ":" + m + ":" + s + " " + day + "/" + mo + "/" + ye;
     document.getElementById('txt').innerHTML = h + ":" + m + ":" + s + " " + ye + "-" + mo + "-" + day;
     setTimeout(startTime, 1000);
   }
@@ -78,8 +76,9 @@ function dropdownChoice3() {
   }
 }
 
-//debug to see if dropdownChoice function was changing taskPriority
+// debug to see if dropdownChoice function was changing taskPriority
 // executes/calls code or functions every x amount of seconds
+// old debugging junk
 var intervalId = window.setInterval(function(){
 	//console.log("dropdown output = " + taskPriority);
   //console.log(buttonCount);
@@ -195,12 +194,13 @@ function taskPageAlert() {
   let tasks = document.getElementById("1").value;
   let dateTime = document.getElementById("txt").innerHTML;
   console.log(tasks + " " + dateTime); 
+  // this is the if else statement that will actually look for the created tasks and check if there is any or not.
+  // if there are no tasks then it will wait until there is one.
   if (dateTime >= tasks) {
     var taskNameInput = document.getElementById("taskNameInput").value;
     var taskNameInputString = taskNameInput;
     alert("ALERT: " + taskNameInputString + " is due!, This task will now be deleted.");
     console.log("ALERT: " + taskNameInputString + " is due!, This task will now be deleted.");
-    // add in code here to delete the button that has matching time and date
     document.getElementById("1").id = 0;
   } else if (dateTime != tasks) {
     console.log("waiting for task....");
