@@ -7,8 +7,70 @@
     <link rel="stylesheet" href="..\style.css" />
     <title>Task Tracker</title>
     <link rel="manifest" href="manifest.json" />
-    
   </head>
+  <style>
+    .h2 {
+        font-size: 16px;
+      }
+      /* Dropdown Button */
+      .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Dropdown button on hover & focus */
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+      }
+
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .tasks {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin: 0 auto;
+        margin: 0;
+        position: relative;
+        top: 50%;
+        left: 45.25%;
+      }
+
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {background-color: #ddd;}
+
+      /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+      .show {display:block;}
+  </style>
   <body>
     <main>
       <img src="..\images\icons\icon-128x128.png"/>
@@ -16,25 +78,25 @@
         <h1>Time Management Tips</h1>
         <ul>
           <li><a href="..\index.html">Home</a></li>
-          <li><a href="..\diary.html">Diary</a></li>
+          <li><a href="..\pages\diary.html">Diary</a></li>
         </ul>
       </nav>
-      <div class="container"></div>
+      <h2>Choose a study tip:</h2>
+        <div class="dropdown">
+          <button onclick="htmlDropdown()" class="dropbtn">Study Tips</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a type="button" id="dropdownChoice1" onclick="dropdownChoice1()">Managing Your Time</a>
+            <a type="button" id="dropdownChoice2" onclick="dropdownChoice2()">Choice 2</a>
+            <a type="button" id="dropdownChoice3" onclick="dropdownChoice3()">Choice 3</a>
+            <a type="button" id="dropdownChoice4" onclick="dropdownChoice4()">Choice 4</a>
+            <a type="button" id="dropdownChoice5" onclick="dropdownChoice5()">Choice 5</a>
+            <a type="button" id="dropdownChoice6" onclick="dropdownChoice6()">Choice 6</a>
+            <a type="button" id="dropdownChoice7" onclick="dropdownChoice7()">Choice 7</a>
+          </div>
+          <div id="studyTipsText" class="studyTipsText">
+          <textarea rows="10" cols="70" name="text" placeholder="example text, WRITE CODE TO MAKE THIS DISPLAY WITH TEXT WHEN A STUDY TIP IS CHOSEN"></textarea>
+        </div>
     </main>
-    <script src="../app.js"></script>
-    <script>
-      // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
-      function wait(ms){
-        var start = new Date().getTime();
-        var end = start;
-        while(end < start + ms) {
-          end = new Date().getTime();
-        }
-      } 
-
-      wait(1000);
-      // tell user that the page has successfully loaded via the console
-      console.log("tips.html successfully loaded! (HTML PAGE LOCATION: /myPWA/public/pages/tips.html)");
-    </script>
+    <script src="../js/tips.js"></script>
   </body>
 </html>

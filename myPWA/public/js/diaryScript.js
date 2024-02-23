@@ -32,33 +32,31 @@ function wait(ms){
     }
   }
 
-  // this portion of js code (line 15 - line 38) is from:
+  // this portion of code is from:
   // https://stackoverflow.com/questions/13685263/can-i-save-input-from-form-to-txt-in-html-using-javascript-jquery-and-then-us
   function download(filename, text) {
     var pom = document.createElement('a');
-    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
-  
-  encodeURIComponent(text));
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     pom.setAttribute('download', filename);
-  
     pom.style.display = 'none';
     document.body.appendChild(pom);
-  
     pom.click();
-  
+    document.body.removeChild(pom);
+  }
+  function addTextTXT() {
+    document.addtext.name.value = document.addtext.name.value + ".txt"
+  }
+
+  function download2(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+    pom.style.display = 'none';
+    document.body.appendChild(pom);
+    pom.click();
     document.body.removeChild(pom);
   }
   
-  function addTextHTML()
-  {
-      document.addtext.name.value = document.addtext.name.value + ".html"
-  }
-  
-  function addTextTXT()
-  {
-      document.addtext.name.value = document.addtext.name.value + ".txt"
-  }
-
 // this portion of code is from:
 // https://stackoverflow.com/questions/12214057/drag-n-drop-text-file  
   function handleFileSelect(evt) {

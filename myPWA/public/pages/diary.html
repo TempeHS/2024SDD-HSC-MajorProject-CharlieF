@@ -32,20 +32,35 @@
         font-size: auto;
       }
 
+      /* Dropdown Button */
+      .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Dropdown button on hover & focus */
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+      }
+
       .show {display:block;}
     </style>
     <main>
       <img src="..\images\icons\icon-128x128.png"/>
       <nav>
-        <h1>Diary</h1>
+        <h1>Text Diary</h1>
         <ul>
           <li><a href="..\index.html">Home</a></li>
-          <li><a href="..\calender.html">Calendar</a></li>
+          <li><a href="..\pages\calender.html">Calendar</a></li>
         </ul>
       </nav>
       <div class="container">
-        <button id="select1" onclick="hideShowCreateButton1()">Create Text File</button>
-        <button id="select2" onclick="hideShowCreateButton2()">Edit Text File</button>
+        <button class="dropbtn" id="select1" onclick="hideShowCreateButton1()">Create Text File</button>
+        <button class="dropbtn" id="select2" onclick="hideShowCreateButton2()">Edit Text File</button>
       </div>
       <div id="content1" style="display:none" class="textFileCreate">
         <!-- this code is from https://stackoverflow.com/questions/13685263/can-i-save-input-from-form-to-txt-in-html-using-javascript-jquery-and-then-us -->  
@@ -54,14 +69,20 @@
           <textarea rows="10" cols="70" name="text" placeholder="Type your text here:"></textarea>
           <br>
           <input type="text" name="name" value="" placeholder="File Name">
-          <input type="submit" onClick="addTextHTML();" value="Save As HTML">
-          <input type="submit" onClick="addTexttxt();" value="Save As TXT">
-
+          <input class="dropbtn" type="submit" onClick="addTexttxt();" value="Save As TXT">
           </form>
       </div>
       <div id="content2" style="display:none" class="textDragDropEdit">
-        <textarea id="drop_zone">Drop files here</textarea>
+        <form name="addtext" onsubmit="download(this['name'].value, this['text'].value)">
+          <textarea name="text" id="drop_zone" rows="10" cols="70">Drop files here</textarea>
+          <br>
+          <input type="text" name="name" value="" placeholder="File Name">
+          <input class="dropbtn" type="submit" onClick="addTexttxt();" value="Save As TXT">
+        </form>
       </div>
+      <h1>Instructions:</h1>
+      <h2>Click "Create Text File" to make a new diary text file.</h2>
+      <h2>Click "Edit Text File" to open a text file, and type the file name the filename text box to name/rename the file.</h2>
     </main>
     <script src="../js/diaryScript.js"></script>
   </body>
