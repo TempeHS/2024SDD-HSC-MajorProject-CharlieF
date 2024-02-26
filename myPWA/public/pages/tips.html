@@ -38,9 +38,10 @@
         display: none;
         position: absolute;
         background-color: #f1f1f1;
-        min-width: 160px;
+        min-width: 260px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
+        position: relative;
       }
 
       /* Links inside the dropdown */
@@ -49,6 +50,7 @@
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        position: relative;
       }
 
       .tasks {
@@ -83,18 +85,24 @@
       </nav>
       <h2>Choose a study tip:</h2>
         <div class="dropdown">
+          
           <button onclick="htmlDropdown()" class="dropbtn">Study Tips</button>
           <div id="myDropdown" class="dropdown-content">
-            <a type="button" id="dropdownChoice1" onclick="dropdownChoice1()">Managing Your Time</a>
-            <a type="button" id="dropdownChoice2" onclick="dropdownChoice2()">Choice 2</a>
-            <a type="button" id="dropdownChoice3" onclick="dropdownChoice3()">Choice 3</a>
-            <a type="button" id="dropdownChoice4" onclick="dropdownChoice4()">Choice 4</a>
-            <a type="button" id="dropdownChoice5" onclick="dropdownChoice5()">Choice 5</a>
+            <a type="button" id="dropdownChoice1" onclick="dropdownChoice1()">Prioritise Tasks</a>
+            <a type="button" id="dropdownChoice2" onclick="dropdownChoice2()">Set specific goals</a>
+            <a type="button" id="dropdownChoice3" onclick="dropdownChoice3()">Use time blocking</a>
+            <a type="button" id="dropdownChoice4" onclick="dropdownChoice4()">Minimize distractions</a>
+            <a type="button" id="dropdownChoice5" onclick="dropdownChoice5()">Learn to say no</a>
           </div>
-          
           <div id="studyTipsText" class="studyTipsText" style="display:none">
-          <textarea readonly rows="10" cols="70" name="text" id="textBox" placeholder=""></textarea>
+          <h1 id="h1"></h1>
+          <br>
+          <h2 id="h2-1"></h2>
+          <br>
+          <h2 id="h2-2"></h2>
+          <center>
           <button onclick="closeTipSelector()" style="display:block" class="dropbtn">Close</button>
+          </center>
         </div>
     </main>
     <script src="../js/tips.js"></script>
