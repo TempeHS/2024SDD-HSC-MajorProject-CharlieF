@@ -90,11 +90,11 @@
             <a type="button" id="dropdownChoice3" onclick="dropdownChoice3()">Choice 3</a>
             <a type="button" id="dropdownChoice4" onclick="dropdownChoice4()">Choice 4</a>
             <a type="button" id="dropdownChoice5" onclick="dropdownChoice5()">Choice 5</a>
-            <a type="button" id="dropdownChoice6" onclick="dropdownChoice6()">Choice 6</a>
-            <a type="button" id="dropdownChoice7" onclick="dropdownChoice7()">Choice 7</a>
           </div>
-          <div id="studyTipsText" class="studyTipsText">
-          <textarea readonly rows="10" cols="70" name="text" placeholder="example text, WRITE CODE TO MAKE THIS DISPLAY WITH TEXT WHEN A STUDY TIP IS CHOSEN"></textarea>
+          
+          <div id="studyTipsText" class="studyTipsText" style="display:none">
+          <textarea readonly rows="10" cols="70" name="text" id="textBox" placeholder=""></textarea>
+          <button onclick="closeTipSelector()" style="display:block" class="dropbtn">Close</button>
         </div>
     </main>
     <script src="../js/tips.js"></script>

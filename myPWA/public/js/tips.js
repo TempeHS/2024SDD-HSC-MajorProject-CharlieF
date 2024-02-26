@@ -1,3 +1,5 @@
+var studyTip = 0;
+
 // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
 function wait(ms){
     var start = new Date().getTime();
@@ -33,21 +35,64 @@ function wait(ms){
   
   function dropdownChoice1() {
     if (document.getElementById("dropdownChoice1").onclick) {
-      taskPriority = 1;
-      console.log("task priority is changed to " + taskPriority)
+      studyTip = 1;   
+      console.log("User selected study tip: " + studyTip);
+      hideShowCreateButton();
     }
   }
   
   function dropdownChoice2() {
     if (document.getElementById("dropdownChoice2").onclick) {
-      taskPriority = 2;
-      console.log("task priority is changed to " + taskPriority)
+      studyTip = 2;
+      console.log("User selected study tip: " + studyTip);
+      hideShowCreateButton();
     }
   }
   
   function dropdownChoice3() {
     if (document.getElementById("dropdownChoice3").onclick) {
-      taskPriority = 3;
-      console.log("task priority is changed to " + taskPriority)
+      studyTip = 3;
+      console.log("User selected study tip: " + studyTip);
+      hideShowCreateButton();
+    }
+  }
+  function dropdownChoice4() {
+    if (document.getElementById("dropdownChoice4").onclick) {
+      studyTip = 4;   
+      console.log("User selected study tip: " + studyTip);
+      hideShowCreateButton();
+    }
+  }
+  
+  function dropdownChoice5() {
+    if (document.getElementById("dropdownChoice5").onclick) {
+      studyTip = 5;
+      console.log("User selected study tip: " + studyTip);
+      hideShowCreateButton();
+    }
+  }
+
+  function hideShowCreateButton() {
+    var x = document.getElementById("studyTipsText");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function closeTipSelector() {
+    var x = document.getElementById("studyTipsText");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
+  function studyTipTextBoxUpdate() {
+    if (studyTip == 1) {
+      var textArea = document.getElementById("textBox").innerHTML;
+      textArea = "Prioritize tasks: Start each day by listing tasks in order of importance. Focus on completing high-priority tasks first to ensure that crucial objectives are met.\nNot all tasks are created equal. Some have a more significant impact on your goals or deadlines than others. By prioritizing tasks, you ensure that you're tackling the most important things first. One popular method for prioritization is the Eisenhower Matrix, which categorizes tasks into four quadrants based on their urgency and importance. This helps you identify what needs immediate attention versus what can be delegated or deferred.";
     }
   }
