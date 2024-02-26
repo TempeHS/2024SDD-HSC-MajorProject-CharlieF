@@ -3,6 +3,7 @@
 
 # Event/Activity/Task planner
 ## TODO:
-  - Nuke most of repo to implement new design and new functions
+  - ~~Nuke most of repo to implement new design and new functions~~
 
 # Documentation
+The documentation page is located on my [GitHub Pages Website](https://tempehs.github.io/2024SDD-HSC-MajorProject-CharlieF/myPWA/public/pages/documentation.html)
