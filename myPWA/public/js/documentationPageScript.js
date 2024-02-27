@@ -107,8 +107,8 @@ function wait(ms){
       console.log("Documentation dropdown choice " + docDropdwnSel + " has been set.");
     } else if (docDropdwnSel == 4) {
       document.getElementById("h1").innerHTML = "Development";
-      document.getElementById("h2-1").innerHTML = "Developing this WebApp had shown many challenges that had taught me something in a way and learning new ways to overcome these challenges was fun.";
-      document.getElementById("h2-2").innerHTML = "Starting the initial develeopment, I opted to ditch using an SQLite database as backend to front end would be difficult to implement for a project like this, I had just chose to modify HTML elements and data in Javascript as it was much easier for me to work with. After I had created the first few pages I started to work on making the scripts. Making the scripts was often difficult at times but frustrating";
+      document.getElementById("h2-1").innerHTML = "Developing this WebApp has created many challenges that had taught to overcome them in different ways. Starting the initial develeopment, I opted to ditch using an SQLite database as backend to front end would be difficult to implement for a project like this, I had just chose to modify HTML elements and data in Javascript as it was much easier for me to work with.";
+      document.getElementById("h2-2").innerHTML = "After I had created the first few pages I started to work on making the scripts. Making the calendar was frustrating and at sometimes difficult but once I had solved those issues I had noticed the calendar page somehow broke again which took me quite a bit so fix again but after I had fixed it again I had implemented an audio file that plays to alert the user. Developing the other pages wasnt too difficult, the most I had to do was copy and paste the dropdown script and the hide/show elements scipt from the calendar page and applied it to the other WebPages and made minor tweaks to the code and the code was mostly finished.";
       console.log("Documentation dropdown choice " + docDropdwnSel + " has been set.");
     }
   }
