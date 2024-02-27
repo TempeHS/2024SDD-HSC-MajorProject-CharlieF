@@ -20,6 +20,71 @@
     <meta name="theme-color" content="#db4938" />
     <link rel="icon" type="image/x-icon" href="images/icons/icon-512x512.png" />
   </head>
+  <style>
+    .h2 {
+        font-size: 16px;
+      }
+      /* Dropdown Button */
+      .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Dropdown button on hover & focus */
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+      }
+
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 260px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        position: relative;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        position: relative;
+      }
+
+      .tasks {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin: 0 auto;
+        margin: 0;
+        position: relative;
+        top: 50%;
+        left: 45.25%;
+      }
+
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {background-color: #ddd;}
+
+      /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+      .show {display:block;}
+  </style>
   <body>
     <main>
       <img src="..\images\icons\icon-128x128.png"/>
@@ -30,6 +95,12 @@
           <li><a href="..\pages\diary.html">Diary</a></li>
         </ul>
       </nav>
+      <h1>About Task Tracker:</h1>
+      <br>
+      <h2>This is a WebApp composed of Javascript, HTML and CSS code that was made for my HSC Major Project.</h2>
+      <br>
+      <h2>There are 4 pages that you can view, Task Calendar, Text Diary, and Documentation. To view my code and the repository please visit:</h2>
+      <a class="h1" style="color: black; background-color: transparent; text-decoration: none; font-size: 26px;" href="https://github.com/TempeHS/2024SDD-HSC-MajorProject-CharlieF">GitHub</a>
       <div class="container"></div>
     </main>
     <script src="../app.js"></script>

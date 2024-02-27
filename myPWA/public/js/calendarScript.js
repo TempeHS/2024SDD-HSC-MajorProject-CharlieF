@@ -16,9 +16,14 @@ function wait(ms){
   // tell user that the page has successfully loaded via the console
   console.log("calendar.html successfully loaded! (HTML PAGE LOCATION: /myPWA/public/pages/calendar.html)");
 
+  function addZero(i) {
+    if (i < 10) {i = "0" + i}
+    return i;
+  }
+
   function startTime() {
     const today = new Date();
-    let h = today.getHours();
+    let h = addZero(today.getHours());
     let m = today.getMinutes();
     let s = today.getSeconds();
     let day = today.getDate();
@@ -196,10 +201,12 @@ function taskPageAlert() {
   console.log(tasks + " " + dateTime); 
   // this is the if else statement that will actually look for the created tasks and check if there is any or not.
   // if there are no tasks then it will wait until there is one.
-  if (dateTime >= tasks) {
+  if (tasks <= dateTime) {
     var taskNameInput = document.getElementById("taskNameInput").value;
     var taskNameInputString = taskNameInput;
-    alert("ALERT: " + taskNameInputString + " is due!, This task will now be deleted.");
+    var snd = new Audio('../sounds/notification.wav');    
+    snd .onended = function () { alert("ALERT: " + taskNameInputString + " is due!, This task will now be deleted.")};
+    snd .play();
     console.log("ALERT: " + taskNameInputString + " is due!, This task will now be deleted.");
     document.getElementById("1").id = 0;
   } else if (dateTime != tasks) {

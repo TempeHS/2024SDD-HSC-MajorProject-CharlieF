@@ -80,7 +80,7 @@ function wait(ms){
 
   // closes the 
   function closeDocSelector() {
-    var x = document.getElementById("docsText");
+    var x = document.getElementById("docsText")
     if (x.style.display === "block") {
       x.style.display = "none";
     } else {
@@ -97,18 +97,18 @@ function wait(ms){
       console.log("Documentation dropdown choice " + docDropdwnSel + " has been set.");      
     } else if (docDropdwnSel == 2) {
       document.getElementById("h1").innerHTML = "Diary Page";
-      document.getElementById("h2-1").innerHTML = "";
-      document.getElementById("h2-2").innerHTML = "";
+      document.getElementById("h2-1").innerHTML = "The Text Diary Page is a page that utilises exporting and importing text files which can be used as a diary, the reason why I chose to use text files is to avoid using temporary storage to store diary contents for only until the webpage is refreshed.";
+      document.getElementById("h2-2").innerHTML = "How this page works is by firstly clicking 'Create Text File' and write your whatever you want in there, after you are done you can set a file name in the text box and click 'Save'. When you want to edit a diary text file, you click 'Edit Text File' and drag 'n' drop your text file into the text box and then start editing the text file. Once you are done, type in either the same filename or a new file name and click 'Save'.";
       console.log("Documentation dropdown choice " + docDropdwnSel + " has been set.");
     } else if (docDropdwnSel == 3) {
       document.getElementById("h1").innerHTML = "Tips Page";
-      document.getElementById("h2-1").innerHTML = "";
-      document.getElementById("h2-2").innerHTML = "";
+      document.getElementById("h2-1").innerHTML = "The tips page is a page that provides the user with 5 time management tips to help the user manage their time with text instructions.";
+      document.getElementById("h2-2").innerHTML = "How this webpage works is by simply clicking the 'Study Tips' dropdown and selecting one of the 5 study tips to read. Once a choice is made, there will be a good amount of information about how to manage you time that will appear that the user can read. The user can click 'Close' to hide the text or to choose another bit of text.";
       console.log("Documentation dropdown choice " + docDropdwnSel + " has been set.");
     } else if (docDropdwnSel == 4) {
       document.getElementById("h1").innerHTML = "Development";
-      document.getElementById("h2-1").innerHTML = "";
-      document.getElementById("h2-2").innerHTML = "";
+      document.getElementById("h2-1").innerHTML = "Developing this WebApp had shown many challenges that had taught me something in a way and learning new ways to overcome these challenges was fun.";
+      document.getElementById("h2-2").innerHTML = "Starting the initial develeopment, I opted to ditch using an SQLite database as backend to front end would be difficult to implement for a project like this, I had just chose to modify HTML elements and data in Javascript as it was much easier for me to work with. After I had created the first few pages I started to work on making the scripts. Making the scripts was often difficult at times but frustrating";
       console.log("Documentation dropdown choice " + docDropdwnSel + " has been set.");
     }
   }
