@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body onload="startTime()">  
+  <body id="body" onload="startTime()">  
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -115,10 +115,15 @@
       <h2>Tasks:</h2>
       <div id="tasksList" class="txt2"></div>
       <br>
+      <div id="instrTXT">
       <br>
       <h1>Instructions:</h1>
-      <h2></h2>
+      <h2>To create a task reminder, click 'Create' and select a date, time and priority, and then type name your task. Once you have selected a date and time, pritority and named your tasks reminder the WebApp will constantly check all the tasks to see if the date and time on them matches the current date and time.</h2>
+      <br>
+      <h2>When the current date and time matches a date and time that is on one of the created user tasks, the WebApp will play a notification sound and make an alert to let the user know that their task is due.</h2>
+      </div>
     </main>
     <script src="../js/calendarScript.js"></script>
   </body>
+<!-- style="margin: 0; position: absolute; top: 540px; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);" -->
 </html>

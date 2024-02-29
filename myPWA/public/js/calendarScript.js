@@ -43,7 +43,7 @@ function wait(ms){
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
   function htmlDropdown() {
-  document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -60,6 +60,9 @@ window.onclick = function(event) {
   }
 }
 
+
+// dropdownChioceX() is the task priority dropdown and changes the taskPriority variable to the users choice
+// NOTE: a priority system has not been implemented yet.
 function dropdownChoice1() {
   if (document.getElementById("dropdownChoice1").onclick) {
     taskPriority = 1;
@@ -81,19 +84,21 @@ function dropdownChoice3() {
   }
 }
 
-// debug to see if dropdownChoice function was changing taskPriority
+// old debugging junk to see if dropdownChoice function was changing taskPriority
 // executes/calls code or functions every x amount of seconds
-// old debugging junk
 var intervalId = window.setInterval(function(){
 	//console.log("dropdown output = " + taskPriority);
   //console.log(buttonCount);
   //console.log(document.getElementById(timeControl));
   //const timeControl = document.querySelector('input[type="time"]');
   //console.log(document.getElementById("txt").value)
+  
+  // calls these two functions every second to run the checks and auto delete tasks that have id 0
   taskPageAlert();
   autoDeleteOldTask();
   }, 1000);
 
+  // hides/shows the date and time selection stuff when the create task button is created.
   function hideShowCreateButton() {
     var x = document.getElementById("txt2");
     if (x.style.display === "none") {
@@ -124,8 +129,9 @@ function saveButtonDataParse () {
   dateTimeOutput = timeControl.value + ":00" + " " + dateControl.value;
 
   // create a new div element
-  const newDiv = document.createElement("div");
-  newDiv.id = "div1";
+  const mainDiv = document.getElementById("main");
+  const newDiv = document.getElementById("tasksList");
+  //newDiv.id = "div1";
   const newButton = document.createElement('button');
 
   // and give it some content
@@ -135,13 +141,17 @@ function saveButtonDataParse () {
   newButton.textContent = taskNameInputString;
 
   // give the "text" class to the button
+  document.body.appendChild(newDiv);
   document.body.appendChild(newButton);
   newButton.classList.add("tasks");
   newButton.id = 1;
+  mainDiv.appendChild(newDiv);
+  newDiv.appendChild(newButton);
 
   // add the newly created element and its content into the DOM
-  let currentDiv = document.getElementById("div");
-  document.body.insertBefore(newDiv, newButton, currentDiv);
+  const txtDiv = document.getElementById("instrTXT");
+  const currentDiv = document.getElementById("main");
+  document.body.insertBefore(currentDiv, txtDiv);
   newButton.addEventListener('click', () => {
     buttonTaskInfo();
   });
@@ -169,6 +179,7 @@ function buttonTaskInfo() {
   deleteTask();
 }
 
+// the subfunction that is part of deleteTask()
 function deleteTaskSubFunction1() {
   var elem = document.getElementById(buttonId);
     elem.parentNode.removeChild(elem);
@@ -176,6 +187,7 @@ function deleteTaskSubFunction1() {
     //buttonId = buttonId -1;
 }
 
+// deletes tasks that have their id changed to 0 when the user is alerted that their task is due
 function autoDeleteOldTask () {
   var elem = document.getElementById("0");
     elem.parentNode.removeChild(elem);
@@ -183,6 +195,7 @@ function autoDeleteOldTask () {
     //buttonId = buttonId -1;
 }
 
+// the main function to delete a task manually
 function deleteTask() {
   window.confirm("Do you want to delete this task?");
   if (confirm("Task deleted!")) {
@@ -196,6 +209,9 @@ function deleteTask() {
 }
 
 function taskPageAlert() {
+  // NOTE: this function will create errors when the page is loaded with no tasks created
+  // To solve this, create a task and the error will go away.
+  
   let tasks = document.getElementById("1").value;
   let dateTime = document.getElementById("txt").innerHTML;
   console.log(tasks + " " + dateTime); 
