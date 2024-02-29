@@ -96,7 +96,7 @@ function wait(ms){
     }
   }
 
-  // closes the 
+  // closes the documentation selector
   function closeDocSelector() {
     var x = document.getElementById("docsText")
     if (x.style.display === "block") {
