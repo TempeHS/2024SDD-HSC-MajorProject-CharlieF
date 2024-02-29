@@ -12,7 +12,7 @@
 // ░                                                      						   
 //*********************************************************************************
 
-// NOTES: 
+// NOTES: this script is no longer in use
 
 
 const sqlite3 = require('sqlite3').verbose();

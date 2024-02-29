@@ -1,37 +1,3 @@
-let result = ""; 
-fetch('./frontEndData.json') 
-  .then(function (response) { 
-    return response.json(); 
-  }) 
-  .then(function (data) { 
-    appendData(data); 
-  }) 
-  .catch(function (err) { 
-    console.log('error: ' + err); 
-  }); 
-  function appendData(data) { 
-    data.forEach(({ taskID, taskName, taskDateInt } = rows) => { 
-      result += ` 
-       <div class="card"> 
-            <img class="card-image" src="https://windsorpreschool.com/teachers/generic-profile-image-7" alt=""/> 
-            <h1 class="card-name">${taskName}</h1> 
-            <p class="card-about">${taskDateInt}</p> 
-            <a class="card-link" ${taskID}</a> 
-        </div> 
-       `; 
-    }); 
-    document.querySelector(".container").innerHTML = result; 
-  } 
-   
-  if ("serviceWorker" in navigator) { 
-    window.addEventListener("load", function () { 
-      navigator.serviceWorker 
-        .register("/serviceWorker.js") 
-        .then((res) => console.log("service worker registered")) 
-        .catch((err) => console.log("service worker not registered", err)); 
-    }); 
-  } 
-
 // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
 function wait(ms){
 	var start = new Date().getTime();
@@ -40,6 +6,8 @@ function wait(ms){
 	  end = new Date().getTime();
    }
  } 
+
+console.log("index.html successfully loaded! (HTML PAGE LOCATION: /myPWA/public/index.html");
 
 // changes page (code taken from https://stackoverflow.com/questions/24903148/navigate-between-html-files)
 function onButtonClick1 () {

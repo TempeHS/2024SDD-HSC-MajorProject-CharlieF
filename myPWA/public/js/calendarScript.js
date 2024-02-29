@@ -1,7 +1,23 @@
+//*********************************************************************************
+// written by:																   
+// ▄████▄   ██░ ██  ▄▄▄       ██▀███   ██▓     ██▓▓█████ 						   
+// ▒██▀ ▀█  ▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██▒    ▓██▒▓█   ▀						    
+// ▒▓█    ▄ ▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒▒██░    ▒██▒▒███  						    
+// ▒▓▓▄ ▄██▒░▓█ ░██ ░██▄▄▄▄██ ▒██▀▀█▄  ▒██░    ░██░▒▓█  ▄						    
+// ▒ ▓███▀ ░░▓█▒░██▓ ▓█   ▓██▒░██▓ ▒██▒░██████▒░██░░▒████▒						   
+// ░ ░▒ ▒  ░ ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░▓  ░░▓  ░░ ▒░ ░						   	
+//   ░  ▒    ▒ ░▒░ ░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░ ▒  ░ ▒ ░ ░ ░  ░						   
+// ░         ░  ░░ ░  ░   ▒     ░░   ░   ░ ░    ▒ ░   ░   						   
+// ░ ░       ░  ░  ░      ░  ░   ░         ░  ░ ░     ░  ░						   
+// ░                                                      						   
+//*********************************************************************************
+
 let taskPriority = 0;
 var taskCount = 0;
 var buttonId = 0;
 var buttonCount = 0;
+let hideInstrText = 0;
+let flipswitch = 0;
 
 // allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
 function wait(ms){
@@ -88,7 +104,7 @@ function dropdownChoice3() {
 // executes/calls code or functions every x amount of seconds
 var intervalId = window.setInterval(function(){
 	//console.log("dropdown output = " + taskPriority);
-  //console.log(buttonCount);
+  console.log(buttonCount);
   //console.log(document.getElementById(timeControl));
   //const timeControl = document.querySelector('input[type="time"]');
   //console.log(document.getElementById("txt").value)
@@ -96,6 +112,12 @@ var intervalId = window.setInterval(function(){
   // calls these two functions every second to run the checks and auto delete tasks that have id 0
   taskPageAlert();
   autoDeleteOldTask();
+  hideInstructionsText();
+  console.log(hideInstrText);
+  if (buttonCount == 0 && hideInstrText == 1) {
+    hideInstrText = 0;
+    flipswitch = 0;
+  }
   }, 1000);
 
   // hides/shows the date and time selection stuff when the create task button is created.
@@ -108,6 +130,40 @@ var intervalId = window.setInterval(function(){
     }
   }
 
+  //stupidly long function just to hide and show instructions
+  function hideInstructionsText() {
+   if (hideInstrText == 0 && buttonCount == 0) {
+    var x = document.getElementById("h1");
+    x.style.display = 'block';
+    var y = document.getElementById("h21");
+    y.style.display = 'block';
+    var z = document.getElementById("h22");
+    z.style.display = 'block';
+    console.log("text is displayed");
+   } else if (hideInstrText == 1 && flipswitch == 0) {
+    console.log("hiding text"); // testing if this function will work.
+    var x = document.getElementById("h1");
+    if (x.style.display === 'block') {
+      x.style.display = 'none';
+    } else {
+      x.style.display = 'block';
+    }
+    var y = document.getElementById("h21");
+    if (y.style.display === 'block') {
+      y.style.display = 'none';
+    } else {
+      y.style.display = 'block';
+    }
+    var z = document.getElementById("h22");
+    if (z.style.display === 'block') {
+      z.style.display = 'none';
+    } else {
+      z.style.display = 'block';
+    }
+    flipswitch = 1;
+   }
+  }
+
 function saveButton() {
   var taskNameInput = document.getElementById("taskNameInput").value;
   var taskNameInputString = taskNameInput;
@@ -117,11 +173,12 @@ function saveButton() {
   x.style.display = "none";
   console.log("task priority is set to: " + taskPriority);
   saveButtonDataParse();
-  buttonCount = buttonCount +1;
+  hideInstructionsText();
+  hideInstrText = 1;
 }  
 
 function saveButtonDataParse () {
-  //buttonId = buttonId +1;
+  buttonCount = buttonCount +1;
   var dateControl = document.querySelector('input[type="date"]');
   var timeControl = document.querySelector('input[type="time"]');
   dateControl.value = dateControl.value;
@@ -144,14 +201,14 @@ function saveButtonDataParse () {
   document.body.appendChild(newDiv);
   document.body.appendChild(newButton);
   newButton.classList.add("tasks");
+  newButton.style = "display:block";
   newButton.id = 1;
   mainDiv.appendChild(newDiv);
   newDiv.appendChild(newButton);
 
   // add the newly created element and its content into the DOM
-  const txtDiv = document.getElementById("instrTXT");
   const currentDiv = document.getElementById("main");
-  document.body.insertBefore(currentDiv, txtDiv);
+  //document.body.insertBefore(currentDiv, txtDiv);
   newButton.addEventListener('click', () => {
     buttonTaskInfo();
   });
@@ -189,9 +246,13 @@ function deleteTaskSubFunction1() {
 
 // deletes tasks that have their id changed to 0 when the user is alerted that their task is due
 function autoDeleteOldTask () {
-  var elem = document.getElementById("0");
-    elem.parentNode.removeChild(elem);
-    buttonCount = buttonCount -1;
+    if (document.getElementById("1")) {
+      return false;
+    } else if (document.getElementById("0")) {
+      var element = document.getElementById("0");
+      element.parentNode.removeChild(element);
+      buttonCount = buttonCount -1;
+    }
     //buttonId = buttonId -1;
 }
 
@@ -212,8 +273,11 @@ function taskPageAlert() {
   // NOTE: this function will create errors when the page is loaded with no tasks created
   // To solve this, create a task and the error will go away.
   
-  let tasks = document.getElementById("1").value;
-  let dateTime = document.getElementById("txt").innerHTML;
+  if (buttonCount == 0) {
+    return false;
+  } else if (buttonCount != 0) {
+    let tasks = document.getElementById("1").value;
+    let dateTime = document.getElementById("txt").innerHTML;
   console.log(tasks + " " + dateTime); 
   // this is the if else statement that will actually look for the created tasks and check if there is any or not.
   // if there are no tasks then it will wait until there is one.
@@ -227,5 +291,6 @@ function taskPageAlert() {
     document.getElementById("1").id = 0;
   } else if (dateTime != tasks) {
     console.log("waiting for task....");
+  }
   }
 }
