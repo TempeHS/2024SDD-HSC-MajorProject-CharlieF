@@ -43,7 +43,7 @@ function wait(ms){
     let m = today.getMinutes();
     let s = today.getSeconds();
     let day = today.getDate();
-    let mo = today.getUTCMonth() +1;
+    let mo = today.getUTCMonth() +2;
     let ye = today.getFullYear();
     m = checkTime(m);
     s = checkTime(s);
